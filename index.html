@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaStay - Coming Soon | Luxury Coliving in Bengaluru</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #B8860B;
+            --primary-gold-light: #DAA520;
+            --primary-gold-dark: #8B6914;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section - Full Screen */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(26, 26, 26, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 50%, #996F0A 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #FFF;
+            text-shadow: 
+                1px 1px 0 #B8860B,
+                2px 2px 0 #996F0A,
+                3px 3px 0 #7A5908,
+                4px 4px 0 #5B4306,
+                5px 5px 8px rgba(0,0,0,0.4);
+            transform: perspective(300px) rotateX(10deg);
+            box-shadow: 
+                0 6px 12px rgba(0,0,0,0.3),
+                0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .logo-text {
+            color: #DAA520;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 
+                1px 1px 0 #B8860B,
+                2px 2px 0 #996F0A,
+                3px 3px 0 #7A5908,
+                4px 4px 0 #5B4306,
+                5px 5px 10px rgba(0,0,0,0.4);
+            line-height: 0.9;
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            color: var(--primary-gold-light);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Amenities Preview */
+        .amenities-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .amenity-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .amenity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold-light);
+        }
+
+        .amenity-item h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Interest Form */
+        .interest-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 500px;
+            margin: 3rem auto 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-gold-dark) 100%);
+            color: white;
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.5);
+        }
+
+        /* Launch Timeline */
+        .timeline {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .timeline h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .timeline-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-date {
+            color: var(--primary-gold-light);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event {
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-delay {
+            animation: fadeInUp 1.2s ease 0.3s both;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
+
+            .interest-form {
+                padding: 2rem;
+                margin: 2rem auto 0;
+                width: calc(100% - 2rem);
+                max-width: 500px;
+            }
+
+            .amenities-preview {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .timeline-items {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(76, 175, 80, 0.2);
+            border: 2px solid #4CAF50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+            background: #20BA5A;
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">N</div>
+                <div class="logo-text-container">
+                    <div class="logo-text">NOVASTAY</div>
+                    <div class="logo-tagline">Luxury Coliving</div>
+                </div>
+            </div>
+
+            <!-- Coming Soon Badge -->
+            <div class="coming-soon">Coming Soon</div>
+
+            <!-- Main Headline -->
+            <h1>Luxury Coliving<br>Redefined</h1>
+            <div class="tagline">koramangala, bengaluru</div>
+            <p>The most sophisticated coliving experience in Bengaluru is launching soon. Be among the first to experience premium shared living with unmatched amenities and vibrant community.</p>
+
+            <!-- Amenities Preview -->
+            <div class="amenities-preview animate-delay">
+                <div class="amenity-item">
+                    <div class="amenity-icon">🏠</div>
+                    <h3>Fully Furnished</h3>
+                    <p>Premium furniture & appliances</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">💪</div>
+                    <h3>Fitness Center</h3>
+                    <p>24/7 modern gym access</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🍳</div>
+                    <h3>Gourmet Kitchen</h3>
+                    <p>Chef-grade appliances</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">🔒</div>
+                    <h3>Premium Security</h3>
+                    <p>Advanced access control</p>
+                </div>
+            </div>
+
+            <!-- Interest Form -->
+            <div class="interest-form animate-delay">
+                <h3 class="form-title">Join the Waitlist</h3>
+                <p class="form-subtitle">Be the first to know when we launch and get exclusive early access</p>
+                
+                <form id="interestForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interest">Accommodation Type</label>
+                        <select id="interest" name="interest" required>
+                            <option value="">Select your preference</option>
+                            <option value="private-room">Private Room</option>
+                            <option value="two-sharing">Two Sharing</option>
+                            <option value="both">Open to Both</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">When are you looking to move?</label>
+                        <select id="timeline" name="timeline" required>
+                            <option value="">Select timeline</option>
+                            <option value="immediate">Immediately</option>
+                            <option value="1-month">Within 1 month</option>
+                            <option value="2-3-months">2-3 months</option>
+                            <option value="3-6-months">3-6 months</option>
+                            <option value="6-months-plus">6+ months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Notes (Optional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Any specific requirements or questions?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Join Waitlist</button>
+                    
+                    <div class="success-message" id="successMessage">
+                        <strong>Welcome to the NovaStay family!</strong><br>
+                        You'll be the first to know when we launch. We'll send you exclusive updates and early access opportunities.
+                    </div>
+                </form>
+            </div>
+
+            <!-- Launch Timeline -->
+            <div class="timeline animate-delay">
+                <h3>Launch Timeline</h3>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Q1 2025</div>
+                        <div class="timeline-event">Construction Completion</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Q2 2025</div>
+                        <div class="timeline-event">Furnishing & Setup</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Q3 2025</div>
+                        <div class="timeline-event">Grand Opening</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/919030939850?text=Hi%20NovaStay!%20I'm%20interested%20in%20learning%20more%20about%20luxury%20coliving%20in%20Koramangala." target="_blank" class="whatsapp-button">
+        <span class="whatsapp-icon">💬</span>
+        <span>Chat with Us</span>
+    </a>
+
+    <script>
+        // Form submission handling
+        document.getElementById('interestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Format data for WhatsApp message
+            const phoneNumber = '919030939850'; // Your WhatsApp number
+
+            // Create a well-formatted message
+            const message = `
+🏠 *New Waitlist Registration - NovaStay*
+
+👤 *Name:* ${data.name}
+📧 *Email:* ${data.email}
+📱 *Phone:* ${data.phone}
+
+🛏️ *Accommodation:* ${data.interest.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+📅 *Move-in Timeline:* ${data.timeline.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+
+${data.message ? `💬 *Additional Notes:*\n${data.message}` : ''}
+
+---
+_Submitted via NovaStay Waitlist Form_
+            `.trim();
+
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp in a new tab
+            window.open(whatsappURL, '_blank');
+
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+
+            // Hide form
+            this.style.display = 'none';
+
+            // Log for debugging
+            console.log('Form submitted:', data);
+        });
+
+        // Add some interactive elements
+        const amenityItems = document.querySelectorAll('.amenity-item');
+        amenityItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate timeline items on scroll
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
